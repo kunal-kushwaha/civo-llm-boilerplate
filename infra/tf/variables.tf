@@ -18,6 +18,7 @@ variable "cluster_node_size" {
 
 }
 
+
 # the number of nodes to provision in the cluster
 variable "cluster_node_count" {
   type        = number
