@@ -24,13 +24,16 @@ jobs:
 
     - name: Terraform Init
       id: init
-      run: cd infra/tf && terraform init 
+      working-directory: infra/tf
+      run: terraform init 
 
     - name: Terraform Plan
       id: plan
-      run: cd infra/terraform && terraform plan -no-color -out=tfplan
+      working-directory: infra/tf
+      run: terraform plan -no-color -out=tfplan
       continue-on-error: true
 
     - name: Terraform Apply
+      working-directory: infra/tf
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: cd infra/terraform && terraform apply -auto-approve tfplan
+      run: terraform apply -auto-approve tfplan
