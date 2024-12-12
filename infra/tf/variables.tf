@@ -80,6 +80,6 @@ output "ollama_ui_service_ip" {
 }
 
 # Output the web app load balancer public IP
-output "ollama_app_load_balancer_ip" {
-  value = var.deploy_app ? data.kubernetes_service.app.status[0].load_balancer[0].ingress[0].ip : null 
-}
+#output "ollama_app_load_balancer_ip" {
+  #value = var.deploy_app ? data.kubernetes_service.app.status[0].load_balancer[0].ingress[0].ip : null 
+#}

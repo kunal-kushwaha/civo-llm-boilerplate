@@ -5,4 +5,14 @@ resource "helm_release" "ollama-ui" {
   namespace        = "ollama-ui"
   create_namespace = true
   replace = true
+  depends_on = [civo_kubernetes_cluster.cluster]
+}
+
+data "kubernetes_service" "ollama-ui" {
+  metadata {
+    name      = "open-webui"
+    namespace = "ollama-ui"
+  }
+
+  depends_on = [helm_release.ollama-ui]
 }
