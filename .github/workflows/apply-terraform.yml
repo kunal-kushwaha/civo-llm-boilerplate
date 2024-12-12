@@ -8,7 +8,7 @@ on:
       - 'infra/tf/**'
 
 env:
-  civo_token: ${{ secrets.civo_token }}
+  TF_VAR_civo_token: ${{ secrets.civo_token }}
 
 jobs:
   terraform:
